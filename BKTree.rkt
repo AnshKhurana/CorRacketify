@@ -29,7 +29,7 @@
   (define dis (edit-distance word (bknode-value tree)))
   (cond [(<= dis tol)
          (cons (bknode-value tree) (append* (map (lambda (bkn)
-                                                   (cond [(<= (edit-distance (bknode-value bkn) word)
+                                                   (cond [(<= (edit-distance (bknode-value bkn) (bknode-value tree))
                                                               (+ dis tol))
                                                           (find-matching-words word bkn)]
                                                          [else '()]))
